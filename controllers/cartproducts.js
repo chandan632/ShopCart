@@ -22,7 +22,7 @@ function checklogin(req, res, next) {
 
 router.get("/cartproducts", checklogin, async (req, res) => {
     try {
-        const cartproducts = await Cart.find({ email: req.session.email })
+        const cartproducts = await Cart.find({ buyer_email: req.session.email })
         const data = {
             title: "Cart Products",
             cartproducts,
