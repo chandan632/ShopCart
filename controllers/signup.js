@@ -2,7 +2,6 @@ const express = require("express")
 const router = express.Router()
 const session = require("express-session")
 const User = require("./../models/users")
-const Product = require("./../models/products")
 
 router.use(session({
     secret: "sdcvsiudvcoudsvocuvusvclsduvciudsbcoisdivcdsljcouv dxjld ",

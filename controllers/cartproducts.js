@@ -12,9 +12,17 @@ router.use(session({
     }
 }))
 
-router.get("/cartproducts", async (req, res) => {
+function checklogin(req, res, next) {
+    if (req.session.email != "admin@gmail.com" && req.session.email != undefined && req.session.name != "admin") {
+        next()
+    } else {
+        res.redirect("/login")
+    }
+}
+
+router.get("/cartproducts", checklogin, async (req, res) => {
     try {
-        const cartproducts = await Cart.find()
+        const cartproducts = await Cart.find({ email: req.session.email })
         const data = {
             title: "Cart Products",
             cartproducts,
@@ -26,7 +34,7 @@ router.get("/cartproducts", async (req, res) => {
     }
 })
 
-router.delete("/deletecartproduct/:id", async (req, res) => {
+router.delete("/deletecartproduct/:id", checklogin, async (req, res) => {
     try {
         const pro = await Cart.findByIdAndDelete({ _id: req.params.id })
         if (!pro) {

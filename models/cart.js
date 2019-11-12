@@ -1,6 +1,11 @@
 const mongoose = require("mongoose")
 
 const schema = mongoose.Schema({
+    buyer_email: {
+        type: String,
+        trim: true,
+        required: true
+    },
     name: {
         type: String,
         trim: true,

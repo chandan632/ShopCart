@@ -1,9 +1,27 @@
 const express = require("express")
 const router = express.Router()
+const session = require("express-session")
 const Cart = require("./../models/cart")
 const Product = require("./../models/products")
 
-router.post("/addtocart/:id", async (req, res) => {
+router.use(session({
+    secret: "sdcvsiudvcoudsvocuvusvclsduvciudsbcoisdivcdsljcouv dxjld ",
+    saveUninitialized: true,
+    resave: true,
+    cookie: {
+        maxAge: 3600000
+    }
+}))
+
+function checklogin(req, res, next) {
+    if (req.session.email != "admin@gmail.com" && req.session.email != undefined && req.session.name != "admin") {
+        next()
+    } else {
+        res.redirect("/login")
+    }
+}
+
+router.post("/addtocart/:id", checklogin, async (req, res) => {
     try {
         console.log(req.body)
         console.log(req.params.id)
@@ -15,6 +33,7 @@ router.post("/addtocart/:id", async (req, res) => {
             throw new Error("Product not available")
         }
         const data = {
+            buyer_email: req.session.email,
             name: product.name,
             description: product.description,
             price: product.price,
