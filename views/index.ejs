@@ -1,0 +1,42 @@
+<%- include('partials/header') -%>
+<%- include('partials/navbar') -%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h1 class="text-center">Add Products</h1>
+            <form action="/addproduct" method="post" class="addproductform">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" placeholder="Name of the product .. " class="form-control">
+                    <small style="color: red">* required</small>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" name="description" id="description" placeholder="Description of the product .. "
+                        class="form-control">
+                    <small style="color: red">* required.</small>
+                </div>
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="text" name="price" id="price" placeholder="Price of the product .. "
+                        class="form-control">
+                    <small style="color: red">* required</small>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="text" name="quantity" id="quantity" placeholder="Quantity of the product .. "
+                        class="form-control">
+                    <small style="color: red">* required</small>
+                </div>
+                <input type="submit" value="Add Product" class="btn btn-primary py-2 px-3 addproduct">
+                <div id="msg" class="w-50 float-right rounded-lg p-2 text-white" style="height: 40px;">
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+<%- include('partials/footer') -%>

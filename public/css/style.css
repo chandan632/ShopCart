@@ -1,0 +1,17 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #616C6F;
+}
+
+.bg-form {
+    background-color: rgb(166, 167, 168);
+}
+
+*:focus {
+    box-shadow: none !important;
+}

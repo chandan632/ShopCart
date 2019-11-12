@@ -1,0 +1,40 @@
+<%- include('partials/header') -%>
+<%- include('partials/navbar') -%>
+<div class="container">
+    <div class="msg p-2 w-100 rounded-lg text-white">
+
+    </div>
+    <% if(data.cartproducts.length > 0){ %>
+    <h2 class="text-white text-center">WELCOME TO SHOPCART</h2>
+    <h3 class="text-white text-center">Buy your cart added products</h3>
+    <div class="row mt-3">
+        <% data.cartproducts.forEach(product => { %>
+        <div class="col-md-3">
+            <div class="card px-1 mb-5">
+                <div class="card-header text-center">
+                    <i class="fa fa-close float-right p-0 deleteproduct rounded-pill border border-dark"
+                        id="<%= product._id %>" style="cursor: pointer;"></i>
+                    <h4>Name</h4>
+                    <span><%= product.name %></span>
+                </div>
+                <div class="card-body text-center">
+                    <h4>Description</h4>
+                    <span><%= product.description %></span>
+                </div>
+                <div class="card-footer">
+                    <h5>Price: <%= product.price %></h5>
+                    <h5>Added: <%= product.quantity %></h5>
+                    <h5>Total Price: <%= product.totalprice %></h5>
+                    <button class="btn btn-primary w-100 my-2 buy" id="<%= product._id %>">Buy Now</button>
+                </div>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+    <% } else{ %>
+    <h1 class="text-center text-white">No Product Added To Cart</h1>
+    <h5 class="text-center text-white">Add Some Product that you want to purchase</h5>
+    <% } %>
+</div>
+<script src="js/cartproduct.js"></script>
+<%- include('partials/footer') -%>

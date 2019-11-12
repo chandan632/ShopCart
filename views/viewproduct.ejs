@@ -1,0 +1,43 @@
+<%- include('partials/header') -%>
+<%- include('partials/navbar') -%>
+
+<div class="container">
+    <div class="msg p-2 w-100 rounded-lg text-white">
+
+    </div>
+    <% if(data.products.length > 0){ %>
+    <h2 class="text-white text-center">WELCOME TO SHOPCART</h2>
+    <h3 class="text-white text-center">Choose your best product</h3>
+    <div class="row mt-3">
+        <% data.products.forEach(product => { %>
+        <div class="col-md-3">
+            <div class="card px-1 mb-5">
+                <div class="card-header text-center">
+                    <h4>Name</h4>
+                    <span><%= product.name %></span>
+                </div>
+                <div class="card-body text-center">
+                    <h4>Description</h4>
+                    <span><%= product.description %></span>
+                </div>
+                <div class="card-footer">
+                    <h4>Price: <%= product.price %></h4>
+                    <h4>Product left: <%= product.quantity %></h4>
+                    <button class="btn btn-primary w-100 my-2">Buy Now</button>
+                    <form action="/addtocart/<%= product._id %>" method="post" id="addtocartform">
+                        <input type="number" name="number" placeholder="No. of Pro."
+                            class="rounded-sm w-50 border-0 <%= product._id %>" id="numberofproduct">
+                        <input type="submit" id="<%= product._id %>" class="px-1 bg-success border-0 rounded-sm submit"
+                            value="Add to Cart">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+    <% } else { %>
+    <h1 class="text-center text-white">No Product Available In This Site Please contact to Admin Of This Site</h1>
+    <% } %>
+</div>
+<script src="js/viewproduct.js"></script>
+<%- include('partials/footer') -%>

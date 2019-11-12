@@ -1,0 +1,62 @@
+<%- include('partials/header') -%>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form action="/signup" method="POST" class="bg-form p-4 rounded-sm d-block animated fadeIn slower"
+                id="signup-form">
+                <h1 class="text-center mb-2 text-white">SIGN UP</h1>
+                <div class="form-group">
+                    <label for="name" class="text-black">Fullname</label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Fullname ..">
+                </div>
+                <div class="form-group">
+                    <label for="email" class="text-black">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Email ..">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="text-black">Password</label>
+                    <input type="password" class="form-control mb-1" name="password" id="password"
+                        placeholder="Password ..">
+                    <small class="text-black">Make sure password length greater than 8 and less than 20.</small>
+                </div>
+                <div class="form-control bg-color mb-2">
+                    <input type="submit" value="Sign up for ShopCart" class="w-100 h-100 border-0 signupformbtn">
+                </div>
+                <small>Already have an account?
+                    <a href="#" id="login-link">Login.</a>
+                </small>
+                <% if(data.error) { %>
+                <div>
+                    <div class="alert alert-danger mt-2 signupmsg">
+                        <%= data.error %>
+                    </div>
+                </div>
+                <% } %>
+            </form>
+            <form action="/login" method="POST" class="bg-form p-4 rounded-sm d-none animated fadeIn slower"
+                id="login-form">
+                <h1 class="text-center mb-2 text-white">LOGIN</h1>
+                <div class="form-group">
+                    <label for="login-email" class="text-black">Email</label>
+                    <input type="email" class="form-control" name="login_email" id="login-email" placeholder="Email ..">
+                </div>
+                <div class="form-group mb-4">
+                    <label for="login-password" class="text-black">Password</label>
+                    <input type="password" class="form-control mb-1" name="login_password" id="login-password"
+                        placeholder="Password ..">
+                </div>
+                <div class="form-control bg-color mb-2">
+                    <input type="submit" value="Login" class="w-100 h-100 border-0 loginformbtn">
+                </div>
+                <small>New user?
+                    <a href="#" id="signup-link">Create account.</a>
+                </small>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+<script src="js/signup-login.js"></script>
+<%- include('partials/footer') -%>

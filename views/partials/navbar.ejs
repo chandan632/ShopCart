@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light py-3 bg-dark">
+    <a class="navbar-brand text-white font-weight-bold" href="/">ShopCart</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-flex justify-content-around" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item px-3">
+                <a class="nav-link text-white" href="/">Home</a>
+            </li>
+            <% if(data.name == "Admin"){ %>
+            <li class="nav-item px-3">
+                <a class="nav-link text-white" href="/products">Products</a>
+            </li>
+            <li class="nav-item px-3">
+                <a class="nav-link text-white" href="/transaction">Transaction</a>
+            </li>
+            <% } else{ %>
+            <li class="nav-item px-3">
+                <a class="nav-link text-white" href="/cartproducts">Cart Products</a>
+            </li>
+            <% } %>
+        </ul>
+        <ul class="navbar-nav">
+            <% if(data.name) { %>
+            <li class="nav-item px-3">
+                <a href="/profile" class="nav-link text-white login"><%= data.name %></a>
+            </li>
+            <li class="nav-item px-3">
+                <a href="/logout" class="nav-link text-white signup">Logout</a>
+            </li>
+            <% if(data.name != "Admin") { %>
+            <li class="nav-item px-3">
+                <a href="/cartproducts" class="nav-link text-primary">
+                    <i class="fa fa-shopping-cart " style="font-size:30px;z-index: 10"></i>
+                </a>
+            </li>
+            <% } %>
+            <% } else{ %>
+            <li class="nav-item px-3">
+                <a href="/login" class="nav-link text-white login">Login</a>
+            </li>
+            <li class="nav-item px-3">
+                <a href="/signup" class="nav-link text-white signup">Sign up</a>
+            </li>
+            <% } %>
+        </ul>
+    </div>
+</nav>

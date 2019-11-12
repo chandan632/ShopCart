@@ -1,0 +1,39 @@
+<%- include('partials/header') -%>
+<%- include('partials/navbar') -%>
+
+<div class="container-fluid productmsg p-3" style="z-index: 10;"></div>
+
+<div class="container mt-4">
+    <h1 class="text-center text-white">All Products</h1>
+    <table class="table text-center text-white">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.products.forEach(product => { %>
+            <tr id="<%= product._id %>">
+                <td><%= product.name %></td>
+                <td><%= product.description %></td>
+                <td><%= product.price %></td>
+                <td><%= product.quantity %></td>
+                <td id="<%= product._id %>" class="bg-success rounded-lg mr-2 font-italic edit"
+                    style="cursor: pointer;">
+                    EDIT
+                </td>
+                <td id="<%= product._id %>" class="bg-danger rounded-lg font-italic delete" style="cursor: pointer;">
+                    DELETE
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+<%- include('partials/footer') -%>

@@ -1,0 +1,36 @@
+<%- include('partials/header') -%>
+<%- include('partials/navbar') -%>
+
+<div class="container">
+    <h1 class="text-center text-white">All Transactions</h1>
+    <table class="table text-center text-white">
+        <thead>
+            <tr>
+                <th scope="col">Buyer Name</th>
+                <th scope="col">Buyer Email</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total Price</th>
+                <th scope="col">Date(DD/MM/YYYY)</th>
+                <th scope="col">Time(HH:MM:SS)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.transactions.forEach(transaction => { %>
+            <tr>
+                <td><%= transaction.buyer_name %></td>
+                <td><%= transaction.buyer_email %></td>
+                <td><%= transaction.name %></td>
+                <td><%= transaction.price %></td>
+                <td><%= transaction.quantity %></td>
+                <td><%= transaction.totalprice %></td>
+                <td><%= transaction.date %></td>
+                <td><%= transaction.time %></td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+<%- include('partials/footer') -%>
