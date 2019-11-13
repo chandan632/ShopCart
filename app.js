@@ -15,6 +15,7 @@ const addToCart = require("./controllers/addtocart")
 const cartProduct = require("./controllers/cartproducts")
 const buy = require("./controllers/buy")
 const transaction = require("./controllers/transaction")
+const user = require("./controllers/users")
 
 const app = express()
 
@@ -64,6 +65,7 @@ app.use(addToCart)
 app.use(cartProduct)
 app.use(buy)
 app.use(transaction)
+app.use(user)
 
 app.get("/", checklogin, (req, res) => {
     const data = {

@@ -24,7 +24,13 @@ router.post("/signup", async (req, res) => {
         if (req.body.email.trim() == "" || req.body.name.trim() == "" || req.body.password.trim() == "") {
             throw new Error("All field required")
         }
-        const user = new User(req.body)
+        const userdata = {
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password,
+            active: "active"
+        }
+        const user = new User(userdata)
         await user.save()
         req.session.email = user.email
         req.session.name = user.name

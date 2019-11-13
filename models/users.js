@@ -24,6 +24,12 @@ const schema = new mongoose.Schema({
         trim: true,
         minlength: 8,
         maxlength: 20
+    },
+    active: {
+        type: String,
+        required: true,
+        trim: true,
+        default: "not-active"
     }
 })
 

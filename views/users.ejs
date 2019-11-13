@@ -1,0 +1,38 @@
+<%- include('partials/header') -%>
+<%- include('partials/navbar') -%>
+
+<div class="container">
+    <div class="msg text-white p-2"></div>
+    <% if(data.users.length > 0){ %>
+    <h1 class="text-center text-white">Available Users</h1>
+    <table class="table text-center text-white">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Active</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <% data.users.forEach(user => { %>
+        <tr>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td>
+                <%if(user.active == "active"){%>
+                <img src="images/green.jpeg" alt="active" width="10px" height="10px">
+                <%} else {%>
+                <img src="images/red.jpeg" alt="not-active" width="10px" height="10px">
+                <%}%>
+            </td>
+            <td class="bg-danger rounded-lg deleteuser" id="<%= user._id %>" style="cursor: pointer;">DELETE</td>
+        </tr>
+        <% }) %>
+        <% } else{ %>
+    </table>
+    <h4>No users available</h4>
+    <% } %>
+</div>
+
+<script src="js/users.js"></script>
+<%- include('partials/footer') -%>

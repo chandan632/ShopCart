@@ -39,6 +39,11 @@ router.post("/login", async (req, res) => {
             console.log(user)
             req.session.email = user.email
             req.session.name = user.name
+            await User.findOneAndUpdate({ email: user.email }, {
+                $set: {
+                    active: "active"
+                }
+            })
             res.redirect("/viewproduct")
         }
     }
